@@ -28,7 +28,7 @@
             mkDeployScript = { machine, dryRun }: let
               inherit (builtins) abort;
               inherit (final.lib) getExe optionalString concatStringsSep;
-              nix = "${getExe final.nix}";
+              nix = "${getExe flake.nixosConfigurations.${machine}.config.nix.package}";
               nixos-rebuild = "${getExe final.nixos-rebuild}";
               openssh = "${getExe final.openssh}";
               flock = "${getExe final.flock}";
